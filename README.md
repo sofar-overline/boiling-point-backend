@@ -132,29 +132,6 @@ mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=dev
 - Refresh tokens expire in 7 days
 - Tokens signed with HS512 algorithm
 
-## 📁 Project Structure
-
-```
-boiling-backend/
-├── src/
-│   ├── main/
-│   │   ├── java/com/sofar/overline/boiling/
-│   │   │   ├── config/          # Security & app configuration
-│   │   │   ├── controller/      # REST API controllers
-│   │   │   ├── dto/             # Data Transfer Objects
-│   │   │   ├── entity/          # JPA entities
-│   │   │   ├── exception/       # Custom exceptions
-│   │   │   ├── repository/      # Data access layer
-│   │   │   ├── security/        # Security filters & utilities
-│   │   │   ├── service/         # Business logic
-│   │   │   └── util/            # Helper utilities
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       └── application-prod.properties
-│   └── test/                    # Unit and integration tests
-├── pom.xml
-└── README.md
-```
 
 ## 🧪 Testing
 
