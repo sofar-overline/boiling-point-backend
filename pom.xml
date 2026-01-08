@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sofar.overline</groupId>
-    <artifactId>boilpoint-backend</artifactId>
+    <artifactId>boiling-point-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>boiling-backend</name>
-    <description>boilpoint-backend</description>
+    <name>boiling-point-backend</name>
+    <description>boiling-point-backend</description>
     <url/>
     <licenses>
         <license/>
