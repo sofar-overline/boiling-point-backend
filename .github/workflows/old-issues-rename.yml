@@ -21,14 +21,13 @@ jobs:
 
             for (const issue of issues.data) {
               // Skip pull requests and issues that already have the prefix
-              if (!issue.pull_request && !issue.title.startsWith(prefix)) {
-                const newTitle = `${prefix}-${issue.number}-${issue.title}`;
-                await github.rest.issues.update({
+              if (!issue.title.startsWith(`[${prefix}-`)) {
+                const newTitle = `[${prefix}-${issue.number}]-${issue.title}`;
+                github.rest.issues.update({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issue.number,
                   title: newTitle
                 });
-                console.log(`Renamed #${issue.number} to ${newTitle}`);
               }
             }

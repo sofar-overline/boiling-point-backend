@@ -13,12 +13,13 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const prefix = "BP"; // You can change 'BP' to your project code
+            const prefix = "BP"; 
             const issue = context.payload.issue;
             
-            // Only add prefix if it's not already there
-            if (!issue.title.startsWith(prefix)) {
-              const newTitle = `${prefix}-${issue.number}: ${issue.title}`;
+            // Check if title already starts with the bracketed prefix to avoid double-renaming
+            if (!issue.title.startsWith(`[${prefix}-`)) {
+              const newTitle = `[${prefix}-${issue.number}]-${issue.title}`;
+            
               github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
