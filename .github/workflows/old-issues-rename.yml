@@ -1,0 +1,34 @@
+name: Bulk Rename Existing Issues
+on:
+  workflow_dispatch: # This allows you to run it manually from the Actions tab
+
+jobs:
+  rename-all:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Prefix existing issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prefix = "BP";
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all' // Renames open and closed issues
+            });
+
+            for (const issue of issues.data) {
+              // Skip pull requests and issues that already have the prefix
+              if (!issue.pull_request && !issue.title.startsWith(prefix)) {
+                const newTitle = `${prefix}-${issue.number}-${issue.title}`;
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  title: newTitle
+                });
+                console.log(`Renamed #${issue.number} to ${newTitle}`);
+              }
+            }
