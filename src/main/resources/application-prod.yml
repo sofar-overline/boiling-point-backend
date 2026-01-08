@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    azure:
+      keyvault:
+        secret:
+          property-sources:
+            - name: VizeraVault
+              endpoint: https://vizeravault.vault.azure.net/

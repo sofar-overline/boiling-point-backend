@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BoilingApplication {
+public class BoilpointApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(BoilingApplication.class, args);
+    static void main(String[] args) {
+        SpringApplication.run(BoilpointApplication.class, args);
     }
 
 }
