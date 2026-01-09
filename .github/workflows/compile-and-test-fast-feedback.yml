@@ -2,7 +2,9 @@ name: Compile and test fast feedback
 permissions: 
   actions: write
   contents: read
-
+env:
+  GH_TOKEN: ${{ github.token }}
+  
 on:
   workflow_dispatch:  
   push:
@@ -22,4 +24,14 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean install -DskipTests
+
+    - name: add markdown report logger for project
+      run: mvn test --batch-mode
+
+    - name: Publish Test Report
+      uses: scacap/action-surefire-report@v1
+      if: always() # Ensures reports are published even if tests fail
+      with:
+        report_paths: '**/target/surefire-reports/TEST-*.xml'
+    
