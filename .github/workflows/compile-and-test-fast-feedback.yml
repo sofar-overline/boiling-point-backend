@@ -26,8 +26,15 @@ jobs:
     - name: Build with Maven
       run: mvn clean install -DskipTests
 
-    - name: add markdown report logger for project
-      run: mvn test --batch-mode
+    - name: Run tests and SonarCloud analysis
+      env:
+        GITHUB_TOKEN: ${{ secrets. GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets. SONAR_TOKEN }}
+      run: |
+        mvn test sonar:sonar \
+          -Dsonar. projectKey=sofar-overline_boilpoint-backend \
+          -Dsonar.organization=sofar-overline \
+          -Dsonar.host.url=https://sonarcloud.io
 
     - name: Publish Test Report
       uses: test-summary/action@v2
