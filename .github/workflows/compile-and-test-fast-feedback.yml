@@ -30,8 +30,8 @@ jobs:
       run: mvn test --batch-mode
 
     - name: Publish Test Report
-      uses: scacap/action-surefire-report@v1
-      if: always() # Ensures reports are published even if tests fail
-      with:
-        report_paths: '**/target/surefire-reports/TEST-*.xml'
+      if: always()
+      run: |
+        echo "### Test Results 🚀" >> $GITHUB_STEP_SUMMARY
+        echo "The Maven test suite has completed." >> $GITHUB_STEP_SUMMARY
     
