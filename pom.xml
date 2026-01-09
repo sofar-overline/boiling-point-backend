@@ -28,6 +28,9 @@
     </scm>
     <properties>
         <java.version>25</java.version>
+        <sonar.projectKey>sofar-overline_boilpoint-backend</sonar.projectKey>
+        <sonar.organization>sofar-overline</sonar. organization>
+        <sonar. host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencyManagement>
         <dependencies>
