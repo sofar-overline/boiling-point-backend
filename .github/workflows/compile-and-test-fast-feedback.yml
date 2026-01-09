@@ -32,7 +32,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets. SONAR_TOKEN }}
       run: |
         mvn test sonar:sonar \
-          -Dsonar. projectKey=sofar-overline_boilpoint-backend \
+          -Dsonar.projectKey=sofar-overline_boilpoint-backend \
           -Dsonar.organization=sofar-overline \
           -Dsonar.host.url=https://sonarcloud.io
 
